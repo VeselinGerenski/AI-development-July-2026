@@ -11,6 +11,7 @@ history is committed so the backend can be rebuilt from scratch.
 | 2 | `20260710120100_rls_policies.sql`   | Row-Level Security policies |
 | 3 | `20260710120200_storage_buckets.sql`| Storage buckets + object policies |
 | 4 | `20260710120300_seed_categories.sql`| Seed event categories |
+| 5 | `20260710120400_api_grants.sql`     | Grant anon/authenticated roles access (RLS still applies) |
 
 ## Option A — Supabase Dashboard (no CLI needed)
 
