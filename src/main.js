@@ -7,11 +7,14 @@ import './styles/theme.css';
 import './styles/main.css';
 
 import './supabaseClient.js'; // validates configuration early
-import { initRouter } from './router.js';
+import { initRouter, navigateTo } from './router.js';
 import { routes } from './routes.js';
 import { renderNavbar } from './components/navbar.js';
 import { renderFooter } from './components/footer.js';
+import { showToast } from './components/toast.js';
 import { el } from './utils/dom.js';
+import { initSession, getSession, subscribe } from './session.js';
+import { logout } from './services/authService.js';
 
 const app = document.getElementById('app');
 
@@ -21,17 +24,30 @@ const outlet = el('div', { class: 'ev-outlet' });
 const footer = renderFooter();
 app.replaceChildren(navbarHost, outlet, footer);
 
-// Auth wiring lands in the auth commit; for now render the guest navbar.
-// A single `currentSession` is the source of truth the navbar re-reads on navigation.
-const currentSession = { user: null, profile: null, isAdmin: false };
+async function handleLogout() {
+  try {
+    await logout();
+    showToast('You have been signed out.', 'success');
+    navigateTo('/');
+  } catch (err) {
+    showToast(err?.message || 'Could not sign out.', 'error');
+  }
+}
 
 function mountNavbar() {
-  navbarHost.replaceChildren(renderNavbar(currentSession, { onLogout: () => {} }));
+  navbarHost.replaceChildren(renderNavbar(getSession(), { onLogout: handleLogout }));
 }
-mountNavbar();
 
-initRouter(routes, {
-  outlet,
-  notFound: () => import('./pages/notFoundPage.js').then((m) => m.render()),
-  afterNavigate: () => mountNavbar(), // refresh active-link highlighting
-});
+// Re-render the navbar whenever auth state changes.
+subscribe(() => mountNavbar());
+
+// Boot: load the session before starting the router so guards see the real state.
+(async () => {
+  await initSession();
+  mountNavbar();
+  initRouter(routes, {
+    outlet,
+    notFound: () => import('./pages/notFoundPage.js').then((m) => m.render()),
+    afterNavigate: () => mountNavbar(), // refresh active-link highlighting
+  });
+})();
