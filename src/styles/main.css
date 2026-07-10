@@ -1,0 +1,16 @@
+/* Eventide — base styles (theme is expanded in a later commit) */
+:root {
+  --eventide-purple: #6d28d9;
+  --eventide-pink: #ec4899;
+}
+
+body {
+  min-height: 100vh;
+  margin: 0;
+}
+
+#app {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
