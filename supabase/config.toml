@@ -1,0 +1,9 @@
+# Supabase CLI configuration.
+# After `supabase login`, link the local project with:
+#   supabase link --project-ref <your-project-ref>
+# Then apply migrations with:
+#   supabase db push
+project_id = "eventide"
+
+[db]
+major_version = 15
