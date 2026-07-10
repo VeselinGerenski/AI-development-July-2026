@@ -1,8 +1,4 @@
-/* Eventide — base styles (theme is expanded in a later commit) */
-:root {
-  --eventide-purple: #6d28d9;
-  --eventide-pink: #ec4899;
-}
+/* Eventide — layout scaffolding. Design tokens live in theme.css */
 
 body {
   min-height: 100vh;
@@ -13,4 +9,9 @@ body {
   min-height: 100vh;
   display: flex;
   flex-direction: column;
+}
+
+/* Main content grows so the footer sits at the bottom on short pages */
+#app > main {
+  flex: 1 0 auto;
 }
