@@ -40,6 +40,17 @@ export async function getProfile(userId) {
   return data;
 }
 
+export async function updateProfile(userId, patch) {
+  const { data, error } = await supabase
+    .from('profiles')
+    .update(patch)
+    .eq('id', userId)
+    .select()
+    .single();
+  if (error) throw error;
+  return data;
+}
+
 export async function getRole(userId) {
   const { data, error } = await supabase
     .from('user_roles')

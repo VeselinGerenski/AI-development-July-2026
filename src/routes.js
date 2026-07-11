@@ -9,4 +9,5 @@ export const routes = [
   { path: '/events/:id', render: (ctx) => import('./pages/eventDetailPage.js').then((m) => m.render(ctx)) },
   { path: '/events/:id/edit', render: (ctx) => import('./pages/editEventPage.js').then((m) => m.render(ctx)) },
   { path: '/dashboard', render: (ctx) => import('./pages/dashboardPage.js').then((m) => m.render(ctx)) },
+  { path: '/profile', render: (ctx) => import('./pages/profilePage.js').then((m) => m.render(ctx)) },
 ];
