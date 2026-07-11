@@ -8,4 +8,5 @@ export const routes = [
   { path: '/events/new', render: (ctx) => import('./pages/createEventPage.js').then((m) => m.render(ctx)) },
   { path: '/events/:id', render: (ctx) => import('./pages/eventDetailPage.js').then((m) => m.render(ctx)) },
   { path: '/events/:id/edit', render: (ctx) => import('./pages/editEventPage.js').then((m) => m.render(ctx)) },
+  { path: '/dashboard', render: (ctx) => import('./pages/dashboardPage.js').then((m) => m.render(ctx)) },
 ];
