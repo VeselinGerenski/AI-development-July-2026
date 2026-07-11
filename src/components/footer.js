@@ -16,10 +16,7 @@ export function renderFooter() {
         </div>
         <div class="col-md-6 text-md-end">
           <a class="me-3" href="#/">Browse</a>
-          <a class="me-3" href="#/register">Sign up</a>
-          <a href="https://github.com/VeselinGerenski/AI-development-July-2026" target="_blank" rel="noopener">
-            <i class="bi bi-github"></i> GitHub
-          </a>
+          <a href="#/register">Sign up</a>
           <p class="small mb-0 mt-2" style="opacity:.6">© ${year} Eventide</p>
         </div>
       </div>
