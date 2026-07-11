@@ -74,6 +74,9 @@ async function handleRoute() {
   outlet.replaceChildren(spinner());
   window.scrollTo({ top: 0, behavior: 'instant' in window ? 'instant' : 'auto' });
 
+  // Keep the document title in sync with the current screen (a11y / SEO).
+  document.title = match?.route?.title ? `${match.route.title} · Eventide` : 'Eventide';
+
   try {
     let view;
     if (match) {

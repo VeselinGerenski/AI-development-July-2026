@@ -66,5 +66,16 @@ export function renderNavbar(session, handlers = {}) {
   if (logoutBtn && handlers.onLogout) {
     logoutBtn.addEventListener('click', handlers.onLogout);
   }
+
+  // On mobile, collapse the menu after tapping any nav link.
+  const collapseEl = nav.querySelector('#nav-collapse');
+  nav.querySelectorAll('.nav-link, .dropdown-item, .navbar-brand, .btn').forEach((link) => {
+    link.addEventListener('click', () => {
+      if (collapseEl?.classList.contains('show')) {
+        import('bootstrap').then(({ Collapse }) => Collapse.getOrCreateInstance(collapseEl).hide());
+      }
+    });
+  });
+
   return nav;
 }

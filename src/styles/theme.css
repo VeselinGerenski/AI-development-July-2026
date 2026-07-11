@@ -189,3 +189,32 @@ a:hover { text-decoration: none; }
   to { opacity: 1; transform: translateY(0); }
 }
 .ev-page { animation: ev-fade-in 0.25s ease; }
+
+/* ---------- Accessibility & motion ---------- */
+html { scroll-behavior: smooth; }
+
+/* Clear, on-brand focus ring for keyboard users */
+a:focus-visible,
+button:focus-visible,
+.btn:focus-visible,
+.form-control:focus-visible,
+.form-select:focus-visible,
+.nav-link:focus-visible {
+  outline: 3px solid rgba(124, 58, 237, 0.45);
+  outline-offset: 2px;
+}
+
+img { max-width: 100%; }
+
+/* Respect users who prefer reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+  }
+  .card-hover:hover { transform: none; }
+}

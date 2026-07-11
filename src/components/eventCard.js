@@ -7,7 +7,7 @@ export function eventCard(event) {
   const past = isPast(event.event_date);
 
   const banner = event.banner_url
-    ? `<img src="${escapeHtml(event.banner_url)}" alt="" style="height:172px;object-fit:cover" class="w-100">`
+    ? `<img src="${escapeHtml(event.banner_url)}" alt="" loading="lazy" decoding="async" style="height:172px;object-fit:cover" class="w-100">`
     : `<div class="w-100 d-flex align-items-center justify-content-center bg-gradient-brand" style="height:172px">
          <i class="bi ${escapeHtml(cat?.icon || 'bi-calendar-event')} text-white" style="font-size:3rem;opacity:.9"></i>
        </div>`;
