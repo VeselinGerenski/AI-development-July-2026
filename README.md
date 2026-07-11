@@ -9,7 +9,7 @@ built with an AI-assisted development workflow.
 - **Author:** Veselin Gerenski
 - **Email:** veselingerenski@gmail.com
 - **GitHub Repo:** https://github.com/VeselinGerenski/AI-development-July-2026
-- **Live Project URL:** _added on deployment (Day 2/3)_
+- **Live Project URL:** https://radiant-boba-6d5bcc.netlify.app
 - **Sample credentials:** _added with demo data (Day 3)_ — e.g. `demo@eventide.app` / `demo12345`
 
 ---
