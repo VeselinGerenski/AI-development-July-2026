@@ -10,7 +10,9 @@ built with an AI-assisted development workflow.
 - **Email:** veselingerenski@gmail.com
 - **GitHub Repo:** https://github.com/VeselinGerenski/AI-development-July-2026
 - **Live Project URL:** https://eventide-eu.netlify.app
-- **Sample credentials:** _added with demo data (Day 3)_ — e.g. `demo@eventide.app` / `demo12345`
+- **Sample credentials:**
+  - **User:** `demo@eventide.app` / `demo12345`
+  - **Admin:** `admin@eventide.app` / `admin12345`
 
 ---
 

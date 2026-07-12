@@ -12,6 +12,8 @@ history is committed so the backend can be rebuilt from scratch.
 | 3 | `20260710120200_storage_buckets.sql`| Storage buckets + object policies |
 | 4 | `20260710120300_seed_categories.sql`| Seed event categories |
 | 5 | `20260710120400_api_grants.sql`     | Grant anon/authenticated roles access (RLS still applies) |
+| 6 | `20260712100000_harden_event_status_insert.sql` | Force status=pending for non-admin inserts |
+| 7 | `20260712100100_seed_demo_data.sql` | Promote demo admin + seed demo events (optional) |
 
 ## Option A — Supabase Dashboard (no CLI needed)
 
