@@ -2,6 +2,16 @@
 
 > A community **event listings platform** — discover, host and RSVP to local events.
 
+> **📄 Submission details**
+> | | |
+> |---|---|
+> | **Author** | Veselin Gerenski |
+> | **Email** | veselingerenski@gmail.com |
+> | **Live URL** | https://eventide-eu.netlify.app |
+> | **Repo** | https://github.com/VeselinGerenski/AI-development-July-2026 |
+> | **Demo user** | `demo@eventide.app` / `demo12345` |
+> | **Demo admin** | `admin@eventide.app` / `admin12345` |
+
 Eventide is the capstone project for the SoftUni **"Software Technologies with AI"**
 course: a fully functional, multi-page JavaScript application backed by Supabase,
 built with an AI-assisted development workflow.
