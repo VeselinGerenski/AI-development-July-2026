@@ -12,6 +12,11 @@ update public.user_roles set role = 'admin'
 where user_id = (select id from auth.users where email = 'admin@eventide.app');
 
 -- 2) Seed demo events (only if the demo user has none yet).
+-- The guard_event_status trigger forces status=pending for non-admins, and in the
+-- SQL editor there is no auth context, so we temporarily disable it to insert
+-- pre-approved demo data, then re-enable it (client protections stay intact).
+alter table public.events disable trigger events_guard_status;
+
 with demo_user as (
   select id from auth.users where email = 'demo@eventide.app'
 )
@@ -56,3 +61,5 @@ where exists (select 1 from demo_user)
     select 1 from public.events e
     where e.organizer_id = (select id from demo_user)
   );
+
+alter table public.events enable trigger events_guard_status;
