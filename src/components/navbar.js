@@ -28,10 +28,10 @@ export function renderNavbar(session, handlers = {}) {
     <li class="nav-item"><a class="nav-link ${isActive('/dashboard')}" href="#/dashboard">My Events</a></li>
     ${session.isAdmin ? `<li class="nav-item"><a class="nav-link ${isActive('/admin')}" href="#/admin"><i class="bi bi-shield-lock me-1"></i>Admin</a></li>` : ''}
     <li class="nav-item dropdown ms-lg-2">
-      <a class="nav-link dropdown-toggle d-flex align-items-center" href="#" role="button"
+      <button class="nav-link dropdown-toggle d-flex align-items-center border-0 bg-transparent" type="button"
          data-bs-toggle="dropdown" aria-expanded="false">
         ${avatarMarkup}<span>${escapeHtml(name)}</span>
-      </a>
+      </button>
       <ul class="dropdown-menu dropdown-menu-end shadow border-0">
         <li><a class="dropdown-item" href="#/profile"><i class="bi bi-person me-2"></i>Profile</a></li>
         <li><a class="dropdown-item" href="#/dashboard"><i class="bi bi-calendar-event me-2"></i>My Events</a></li>
@@ -67,9 +67,10 @@ export function renderNavbar(session, handlers = {}) {
     logoutBtn.addEventListener('click', handlers.onLogout);
   }
 
-  // On mobile, collapse the menu after tapping any nav link.
+  // On mobile, collapse the menu after tapping a navigating link. The dropdown
+  // toggle is excluded so opening the user menu doesn't close the whole navbar.
   const collapseEl = nav.querySelector('#nav-collapse');
-  nav.querySelectorAll('.nav-link, .dropdown-item, .navbar-brand, .btn').forEach((link) => {
+  nav.querySelectorAll('.nav-link:not(.dropdown-toggle), .dropdown-item, .navbar-brand, a.btn').forEach((link) => {
     link.addEventListener('click', () => {
       if (collapseEl?.classList.contains('show')) {
         import('bootstrap').then(({ Collapse }) => Collapse.getOrCreateInstance(collapseEl).hide());
