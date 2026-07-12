@@ -1,3 +1,4 @@
+import { Dropdown } from 'bootstrap';
 import { el, escapeHtml } from '../utils/dom.js';
 import { getHashPath } from '../router.js';
 
@@ -29,7 +30,7 @@ export function renderNavbar(session, handlers = {}) {
     ${session.isAdmin ? `<li class="nav-item"><a class="nav-link ${isActive('/admin')}" href="#/admin"><i class="bi bi-shield-lock me-1"></i>Admin</a></li>` : ''}
     <li class="nav-item dropdown ms-lg-2">
       <button class="nav-link dropdown-toggle d-flex align-items-center border-0 bg-transparent" type="button"
-         data-bs-toggle="dropdown" aria-expanded="false">
+         id="user-menu-toggle" aria-expanded="false">
         ${avatarMarkup}<span>${escapeHtml(name)}</span>
       </button>
       <ul class="dropdown-menu dropdown-menu-end shadow border-0">
@@ -61,6 +62,18 @@ export function renderNavbar(session, handlers = {}) {
         </ul>
       </div>
     </div>`;
+
+  // Explicitly control the user-menu dropdown (don't depend on Bootstrap's
+  // data-api auto-init, which proved unreliable with the re-rendered navbar).
+  const ddToggle = nav.querySelector('#user-menu-toggle');
+  if (ddToggle) {
+    const dd = Dropdown.getOrCreateInstance(ddToggle);
+    ddToggle.addEventListener('click', (e) => {
+      e.preventDefault();
+      e.stopPropagation();
+      dd.toggle();
+    });
+  }
 
   const logoutBtn = nav.querySelector('#nav-logout');
   if (logoutBtn && handlers.onLogout) {
